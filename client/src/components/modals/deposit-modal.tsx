@@ -62,7 +62,7 @@ export default function DepositModal({ isOpen, onClose, onSuccess }: DepositModa
       <DialogContent className="sm:max-w-md neon-card border-green-500/30">
         <DialogHeader>
           <div className="flex items-center justify-between">
-            <DialogTitle className="text-xl neon-text">⬆️ INYECCIÓN CUÁNTICA</DialogTitle>
+            <DialogTitle className="text-xl neon-text">💰 DEPOSITAR DINERO</DialogTitle>
             <Button variant="ghost" size="sm" onClick={onClose} className="hover:bg-green-500/20">
               <X className="h-4 w-4 text-green-400" />
             </Button>
@@ -92,12 +92,12 @@ export default function DepositModal({ isOpen, onClose, onSuccess }: DepositModa
                 name="amount"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-green-300 font-medium">Cantidad de Inyección</FormLabel>
+                    <FormLabel className="text-green-300 font-medium">Cantidad a depositar</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Input
                           type="number"
-                          placeholder="Fondos a inyectar"
+                          placeholder="Cantidad a depositar"
                           min={10}
                           step={1}
                           className="cyber-input h-12 text-lg pl-12"
@@ -120,7 +120,7 @@ export default function DepositModal({ isOpen, onClose, onSuccess }: DepositModa
                   className="cyber-button h-12 text-lg font-semibold bg-gradient-to-r from-green-500 to-emerald-500"
                   disabled={depositMutation.isPending}
                 >
-                  {depositMutation.isPending ? "PROCESANDO..." : "INYECTAR"}
+                  {depositMutation.isPending ? "PROCESANDO..." : "DEPOSITAR"}
                 </Button>
                 <Button
                   type="button"

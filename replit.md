@@ -142,7 +142,10 @@ This is a modern banking application built with React/TypeScript on the frontend
 ## Changelog
 
 - June 25, 2025. Initial setup
+- June 25, 2025. Transformed to cyber futuristic design with normal banking terminology
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Design preference: Cyber futuristic visual style with modern effects, gradients, and animations
+Terminology preference: Normal banking words instead of technical/sci-fi terms (e.g., "Saldo" not "Fondos Cuánticos", "PIN" not "Código Cuántico")

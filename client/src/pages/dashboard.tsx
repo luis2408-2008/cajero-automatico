@@ -73,31 +73,31 @@ export default function DashboardPage() {
 
   const showBalance = () => {
     toast({
-      title: "💰 Análisis Cuántico de Fondos",
-      description: `Fondos disponibles en tu cartera digital: ${formatCurrency(user?.balance || 0)}`,
+      title: "💰 Consulta de Saldo",
+      description: `Tu saldo actual es: ${formatCurrency(user?.balance || 0)}`,
     });
   };
 
   const cyberFunctions = [
     {
       id: "balance",
-      title: "Consulta Cuántica",
-      description: "Análisis de fondos",
+      title: "Consultar Saldo",
+      description: "Ver saldo actual",
       icon: Eye,
       gradient: "gradient-cyber-1",
       onClick: showBalance,
     },
     {
       id: "withdraw",
-      title: "Extracción",
-      description: "Retirar fondos",
+      title: "Retirar Dinero",
+      description: "Retiro de efectivo",
       icon: Download,
       gradient: "gradient-cyber-2",
       onClick: () => setActiveModal("withdraw"),
     },
     {
       id: "deposit",
-      title: "Inyección",
+      title: "Depositar Dinero",
       description: "Agregar fondos",
       icon: Upload,
       gradient: "gradient-cyber-3",
@@ -105,24 +105,24 @@ export default function DashboardPage() {
     },
     {
       id: "transfer",
-      title: "Transferencia Neural",
-      description: "Envío quantum",
+      title: "Transferir",
+      description: "Enviar a otro usuario",
       icon: ArrowLeftRight,
       gradient: "gradient-cyber-4",
       onClick: () => setActiveModal("transfer"),
     },
     {
       id: "mobile",
-      title: "Recarga Wireless",
-      description: "Energía móvil",
+      title: "Recarga Móvil",
+      description: "Recargar celular",
       icon: Smartphone,
       gradient: "gradient-cyber-1",
       onClick: () => setActiveModal("mobile"),
     },
     {
       id: "services",
-      title: "Servicios Digitales",
-      description: "Plataformas premium",
+      title: "Servicios",
+      description: "Netflix, Spotify, etc.",
       icon: Play,
       gradient: "gradient-cyber-2",
       onClick: () => setActiveModal("services"),
@@ -132,24 +132,24 @@ export default function DashboardPage() {
   const advancedFunctions = [
     {
       id: "history",
-      title: "Registro Neural",
-      description: "Historial completo",
+      title: "Historial",
+      description: "Ver movimientos",
       icon: FileText,
       gradient: "gradient-cyber-3",
       onClick: () => setActiveModal("history"),
     },
     {
       id: "wheel",
-      title: "Algoritmo de Suerte",
-      description: "Probabilidad cuántica",
+      title: "Rueda de la Suerte",
+      description: "¡Prueba tu suerte!",
       icon: Zap,
       gradient: "gradient-cyber-4",
       onClick: () => setActiveModal("wheel"),
     },
     {
       id: "change-pin",
-      title: "Reconfiguración",
-      description: "Actualizar código",
+      title: "Cambiar PIN",
+      description: "Actualizar seguridad",
       icon: Shield,
       gradient: "gradient-cyber-1",
       onClick: () => setActiveModal("change-pin"),
@@ -191,13 +191,13 @@ export default function DashboardPage() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold neon-text tracking-wider">NEXUS</h1>
-                <p className="text-cyan-400/80 text-xs tracking-wide">QUANTUM INTERFACE</p>
+                <p className="text-cyan-400/80 text-xs tracking-wide">BANCA DIGITAL</p>
               </div>
             </div>
             
             <div className="flex items-center space-x-6">
               <div className="text-right">
-                <p className="text-cyan-400/80 text-sm">Operador Activo</p>
+                <p className="text-cyan-400/80 text-sm">Usuario Activo</p>
                 <p className="font-bold text-cyan-300 text-lg">{user.username}</p>
               </div>
               <Button 
@@ -222,7 +222,7 @@ export default function DashboardPage() {
               <div className="space-y-2">
                 <div className="flex items-center space-x-2">
                   <TrendingUp className="h-5 w-5 text-cyan-400" />
-                  <p className="text-cyan-300/80 text-sm font-medium tracking-wide">FONDOS CUÁNTICOS DISPONIBLES</p>
+                  <p className="text-cyan-300/80 text-sm font-medium tracking-wide">SALDO DISPONIBLE</p>
                 </div>
                 <p className="text-4xl font-bold neon-text">{formatCurrency(user.balance)}</p>
                 <div className="flex items-center space-x-4 text-xs text-cyan-400/60">
@@ -282,7 +282,7 @@ export default function DashboardPage() {
         <div className="space-y-4 mb-8">
           <div className="flex items-center space-x-2">
             <Hexagon className="h-5 w-5 text-purple-400" />
-            <h2 className="text-xl font-bold neon-text-purple">OPERACIONES AVANZADAS</h2>
+            <h2 className="text-xl font-bold neon-text-purple">FUNCIONES ADICIONALES</h2>
             <div className="flex-1 h-px bg-gradient-to-r from-purple-500/50 to-transparent"></div>
           </div>
           

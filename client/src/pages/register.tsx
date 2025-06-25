@@ -87,7 +87,7 @@ export default function RegisterPage() {
             <div className="flex items-center justify-center space-x-2">
               <Shield className="h-4 w-4 text-purple-400" />
               <p className="text-purple-300/80 text-sm font-medium tracking-wide">
-                INICIALIZACIÓN DE CUENTA CUÁNTICA
+                REGISTRO DE NUEVA CUENTA
               </p>
               <Sparkles className="h-4 w-4 text-pink-400 animate-pulse" />
             </div>
@@ -98,7 +98,7 @@ export default function RegisterPage() {
         {/* Cyber Registration Form */}
         <div className="neon-card space-y-6">
           <div className="text-center">
-            <h3 className="text-xl font-semibold text-purple-300 mb-2">Registro Biométrico</h3>
+            <h3 className="text-xl font-semibold text-purple-300 mb-2">Crear Cuenta</h3>
             <div className="h-px w-full bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
           </div>
 
@@ -109,12 +109,12 @@ export default function RegisterPage() {
                 name="username"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-purple-300 font-medium">Identificador Único</FormLabel>
+                    <FormLabel className="text-purple-300 font-medium">Usuario</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Input
                           className="cyber-input pl-12 h-12 text-lg"
-                          placeholder="Tu nombre en el futuro"
+                          placeholder="Nombre de usuario"
                           {...field}
                         />
                         <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
@@ -132,7 +132,7 @@ export default function RegisterPage() {
                 name="pin"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-pink-300 font-medium">Código Cuántico</FormLabel>
+                    <FormLabel className="text-pink-300 font-medium">PIN</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Input
@@ -157,7 +157,7 @@ export default function RegisterPage() {
                 name="confirmPin"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-cyan-300 font-medium">Verificación Cuántica</FormLabel>
+                    <FormLabel className="text-cyan-300 font-medium">Confirmar PIN</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Input
@@ -180,7 +180,7 @@ export default function RegisterPage() {
               <Alert className="bg-green-500/10 border-green-500/30 text-green-300">
                 <DollarSign className="h-5 w-5 text-green-400" />
                 <AlertDescription className="font-medium">
-                  <span className="text-green-400">BONUS INICIAL:</span> Recibirás fondos cuánticos aleatorios entre $100 - $1,000
+                  <span className="text-green-400">BONO INICIAL:</span> Recibirás un saldo aleatorio entre $100 - $1,000
                 </AlertDescription>
               </Alert>
 
@@ -199,7 +199,7 @@ export default function RegisterPage() {
                 <div className="flex items-center space-x-3">
                   <Zap className={`h-5 w-5 ${registerMutation.isPending ? 'animate-spin' : ''}`} />
                   <span>
-                    {registerMutation.isPending ? "INICIALIZANDO CUENTA..." : "ACTIVAR CUENTA NEXUS"}
+                    {registerMutation.isPending ? "CREANDO CUENTA..." : "CREAR CUENTA"}
                   </span>
                 </div>
               </Button>

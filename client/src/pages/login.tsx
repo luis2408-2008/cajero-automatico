@@ -86,7 +86,7 @@ export default function LoginPage() {
             <div className="flex items-center justify-center space-x-2">
               <Shield className="h-4 w-4 text-cyan-400" />
               <p className="text-cyan-300/80 text-sm font-medium tracking-wide">
-                TERMINAL DE ACCESO CUÁNTICO
+                BANCA DIGITAL SEGURA
               </p>
               <Sparkles className="h-4 w-4 text-purple-400 animate-pulse" />
             </div>
@@ -97,7 +97,7 @@ export default function LoginPage() {
         {/* Cyber Login Form */}
         <div className="neon-card space-y-6">
           <div className="text-center">
-            <h3 className="text-xl font-semibold text-cyan-300 mb-2">Autenticación Biométrica</h3>
+            <h3 className="text-xl font-semibold text-cyan-300 mb-2">Inicio de Sesión</h3>
             <div className="h-px w-full bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
           </div>
 
@@ -108,12 +108,12 @@ export default function LoginPage() {
                 name="username"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-cyan-300 font-medium">ID de Usuario</FormLabel>
+                    <FormLabel className="text-cyan-300 font-medium">Usuario</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Input
                           className="cyber-input pl-12 h-12 text-lg"
-                          placeholder="Identificador único"
+                          placeholder="Nombre de usuario"
                           {...field}
                         />
                         <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
@@ -131,7 +131,7 @@ export default function LoginPage() {
                 name="pin"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-purple-300 font-medium">Código de Acceso</FormLabel>
+                    <FormLabel className="text-purple-300 font-medium">PIN</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Input
@@ -166,7 +166,7 @@ export default function LoginPage() {
                 <div className="flex items-center space-x-3">
                   <Zap className={`h-5 w-5 ${loginMutation.isPending ? 'animate-spin' : ''}`} />
                   <span>
-                    {loginMutation.isPending ? "INICIANDO PROTOCOLO..." : "ACCEDER AL SISTEMA"}
+                    {loginMutation.isPending ? "INICIANDO SESIÓN..." : "INICIAR SESIÓN"}
                   </span>
                 </div>
               </Button>

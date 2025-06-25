@@ -76,7 +76,7 @@ export default function WithdrawModal({ isOpen, onClose, onSuccess }: WithdrawMo
       <DialogContent className="sm:max-w-md neon-card border-red-500/30">
         <DialogHeader>
           <div className="flex items-center justify-between">
-            <DialogTitle className="text-xl neon-text-purple">⬇️ EXTRACCIÓN CUÁNTICA</DialogTitle>
+            <DialogTitle className="text-xl neon-text-purple">💰 RETIRAR DINERO</DialogTitle>
             <Button variant="ghost" size="sm" onClick={onClose} className="hover:bg-red-500/20">
               <X className="h-4 w-4 text-red-400" />
             </Button>
@@ -87,7 +87,7 @@ export default function WithdrawModal({ isOpen, onClose, onSuccess }: WithdrawMo
         <div className="space-y-6">
           <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3">
             <p className="text-sm text-green-300">
-              Fondos disponibles:{" "}
+              Saldo disponible:{" "}
               <span className="font-bold text-green-400 neon-text">
                 {user ? formatCurrency(user.balance) : "$0.00"}
               </span>
@@ -115,12 +115,12 @@ export default function WithdrawModal({ isOpen, onClose, onSuccess }: WithdrawMo
                 name="amount"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-cyan-300 font-medium">Cantidad Personalizada</FormLabel>
+                    <FormLabel className="text-cyan-300 font-medium">Cantidad a retirar</FormLabel>
                     <FormControl>
                       <div className="relative">
                         <Input
                           type="number"
-                          placeholder="Cantidad a extraer"
+                          placeholder="Cantidad a retirar"
                           min={10}
                           step={10}
                           className="cyber-input h-12 text-lg pl-12"
@@ -143,7 +143,7 @@ export default function WithdrawModal({ isOpen, onClose, onSuccess }: WithdrawMo
                   className="cyber-button h-12 text-lg font-semibold bg-gradient-to-r from-red-500 to-orange-500"
                   disabled={withdrawMutation.isPending}
                 >
-                  {withdrawMutation.isPending ? "PROCESANDO..." : "EXTRAER"}
+                  {withdrawMutation.isPending ? "PROCESANDO..." : "RETIRAR"}
                 </Button>
                 <Button
                   type="button"
