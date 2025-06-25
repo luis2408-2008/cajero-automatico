@@ -4,17 +4,23 @@ import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
-  CreditCard, 
+  Cpu, 
   DollarSign, 
-  Minus, 
-  Plus, 
+  Download, 
+  Upload, 
   ArrowLeftRight, 
   Smartphone, 
   Play, 
   FileText, 
   Zap, 
-  Lock,
-  LogOut
+  Shield,
+  Power,
+  Eye,
+  TrendingUp,
+  Activity,
+  Sparkles,
+  Hexagon,
+  LucideIcon
 } from "lucide-react";
 import { authService } from "@/lib/auth";
 import { useToast } from "@/hooks/use-toast";
@@ -37,21 +43,21 @@ export default function DashboardPage() {
     queryKey: ["/api/auth/me"],
   });
 
-  const user = userData?.user;
+  const user = userData?.user as any;
 
   const handleLogout = async () => {
     try {
       await authService.logout();
       queryClient.clear();
       toast({
-        title: "Sesión cerrada",
-        description: "Has cerrado sesión exitosamente.",
+        title: "🔒 Sesión Finalizada",
+        description: "Desconectado del sistema de forma segura.",
       });
       setLocation("/");
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Error al cerrar sesión.",
+        title: "Error de Sistema",
+        description: "Fallo en el proceso de desconexión.",
         variant: "destructive",
       });
     }
@@ -67,206 +73,261 @@ export default function DashboardPage() {
 
   const showBalance = () => {
     toast({
-      title: "Saldo Actual",
-      description: `Tu saldo disponible es: ${formatCurrency(user?.balance || 0)}`,
+      title: "💰 Análisis Cuántico de Fondos",
+      description: `Fondos disponibles en tu cartera digital: ${formatCurrency(user?.balance || 0)}`,
     });
   };
 
-  const atmFunctions = [
+  const cyberFunctions = [
     {
       id: "balance",
-      title: "Consultar Saldo",
-      description: "Ver saldo actual",
-      icon: DollarSign,
-      color: "bg-blue-100",
-      iconColor: "text-primary",
+      title: "Consulta Cuántica",
+      description: "Análisis de fondos",
+      icon: Eye,
+      gradient: "gradient-cyber-1",
       onClick: showBalance,
     },
     {
       id: "withdraw",
-      title: "Retirar Dinero",
-      description: "Retiro de efectivo",
-      icon: Minus,
-      color: "bg-red-100",
-      iconColor: "text-red-600",
+      title: "Extracción",
+      description: "Retirar fondos",
+      icon: Download,
+      gradient: "gradient-cyber-2",
       onClick: () => setActiveModal("withdraw"),
     },
     {
       id: "deposit",
-      title: "Depositar Dinero",
+      title: "Inyección",
       description: "Agregar fondos",
-      icon: Plus,
-      color: "bg-green-100",
-      iconColor: "text-green-600",
+      icon: Upload,
+      gradient: "gradient-cyber-3",
       onClick: () => setActiveModal("deposit"),
     },
     {
       id: "transfer",
-      title: "Transferir",
-      description: "Enviar a otro usuario",
+      title: "Transferencia Neural",
+      description: "Envío quantum",
       icon: ArrowLeftRight,
-      color: "bg-purple-100",
-      iconColor: "text-purple-600",
+      gradient: "gradient-cyber-4",
       onClick: () => setActiveModal("transfer"),
     },
     {
       id: "mobile",
-      title: "Recarga Celular",
-      description: "Recargar saldo móvil",
+      title: "Recarga Wireless",
+      description: "Energía móvil",
       icon: Smartphone,
-      color: "bg-yellow-100",
-      iconColor: "text-yellow-600",
+      gradient: "gradient-cyber-1",
       onClick: () => setActiveModal("mobile"),
     },
     {
       id: "services",
-      title: "Servicios",
-      description: "Netflix, Spotify, etc.",
+      title: "Servicios Digitales",
+      description: "Plataformas premium",
       icon: Play,
-      color: "bg-indigo-100",
-      iconColor: "text-indigo-600",
+      gradient: "gradient-cyber-2",
       onClick: () => setActiveModal("services"),
     },
   ];
 
-  const additionalFunctions = [
+  const advancedFunctions = [
     {
       id: "history",
-      title: "Historial",
-      description: "Ver movimientos",
+      title: "Registro Neural",
+      description: "Historial completo",
       icon: FileText,
-      color: "bg-gray-100",
-      iconColor: "text-gray-600",
+      gradient: "gradient-cyber-3",
       onClick: () => setActiveModal("history"),
     },
     {
       id: "wheel",
-      title: "Rueda de la Suerte",
-      description: "¡Prueba tu suerte!",
+      title: "Algoritmo de Suerte",
+      description: "Probabilidad cuántica",
       icon: Zap,
-      color: "bg-pink-100",
-      iconColor: "text-pink-600",
+      gradient: "gradient-cyber-4",
       onClick: () => setActiveModal("wheel"),
     },
     {
       id: "change-pin",
-      title: "Cambiar PIN",
-      description: "Actualizar seguridad",
-      icon: Lock,
-      color: "bg-orange-100",
-      iconColor: "text-orange-600",
+      title: "Reconfiguración",
+      description: "Actualizar código",
+      icon: Shield,
+      gradient: "gradient-cyber-1",
       onClick: () => setActiveModal("change-pin"),
     },
   ];
 
   if (!user) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      <div className="min-h-screen flex items-center justify-center relative">
+        <div className="cyber-loading h-16 w-16 border-4 border-cyan-500/30 border-t-cyan-400 rounded-full animate-spin"></div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-cyan-400 font-mono text-sm animate-pulse">INICIANDO SISTEMA...</div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Animated Background Grid */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+          animation: 'cyber-grid 20s linear infinite'
+        }}></div>
+      </div>
+
+      {/* Cyber Header */}
+      <header className="relative z-10 border-b border-cyan-500/30 bg-black/50 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
-              <div className="h-8 w-8 bg-primary rounded-full flex items-center justify-center mr-3">
-                <CreditCard className="h-4 w-4 text-white" />
+          <div className="flex justify-between items-center py-6">
+            <div className="flex items-center space-x-4">
+              <div className="h-12 w-12 gradient-cyber-1 rounded-xl flex items-center justify-center floating">
+                <Cpu className="h-6 w-6 text-white" />
               </div>
-              <h1 className="text-xl font-semibold text-gray-900">BancoSeguro</h1>
+              <div>
+                <h1 className="text-2xl font-bold neon-text tracking-wider">NEXUS</h1>
+                <p className="text-cyan-400/80 text-xs tracking-wide">QUANTUM INTERFACE</p>
+              </div>
             </div>
             
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-6">
               <div className="text-right">
-                <p className="text-sm text-gray-600">Bienvenido</p>
-                <p className="font-medium text-gray-900">{user.username}</p>
+                <p className="text-cyan-400/80 text-sm">Operador Activo</p>
+                <p className="font-bold text-cyan-300 text-lg">{user.username}</p>
               </div>
               <Button 
                 onClick={handleLogout}
-                variant="destructive"
+                className="bg-red-500/20 hover:bg-red-500/30 border border-red-500/50 text-red-300 hover:text-red-200 transition-all duration-300"
                 size="sm"
               >
-                <LogOut className="h-4 w-4 mr-2" />
-                Cerrar Sesión
+                <Power className="h-4 w-4 mr-2" />
+                DESCONECTAR
               </Button>
             </div>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        {/* Balance Card */}
-        <Card className="gradient-primary text-white mb-8 shadow-lg">
-          <CardContent className="p-6">
+      <main className="relative z-10 max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        {/* Quantum Balance Display */}
+        <div className="neon-card balance-glow mb-8 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10"></div>
+          <div className="relative p-8">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-blue-100 text-sm font-medium">Saldo Disponible</p>
-                <p className="text-3xl font-bold">{formatCurrency(user.balance)}</p>
-                <p className="text-blue-100 text-xs mt-1">
-                  Última actualización: hace 2 minutos
-                </p>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <TrendingUp className="h-5 w-5 text-cyan-400" />
+                  <p className="text-cyan-300/80 text-sm font-medium tracking-wide">FONDOS CUÁNTICOS DISPONIBLES</p>
+                </div>
+                <p className="text-4xl font-bold neon-text">{formatCurrency(user.balance)}</p>
+                <div className="flex items-center space-x-4 text-xs text-cyan-400/60">
+                  <div className="flex items-center space-x-1">
+                    <Activity className="h-3 w-3" />
+                    <span>TIEMPO REAL</span>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <div className="h-1 w-1 bg-green-400 rounded-full animate-pulse"></div>
+                    <span>ACTIVO</span>
+                  </div>
+                </div>
               </div>
-              <div className="h-16 w-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                <DollarSign className="h-8 w-8 text-white" />
+              <div className="relative">
+                <div className="h-20 w-20 gradient-cyber-1 rounded-2xl flex items-center justify-center floating">
+                  <DollarSign className="h-10 w-10 text-white" />
+                </div>
+                <div className="absolute -top-2 -right-2 h-6 w-6 bg-green-400 rounded-full flex items-center justify-center">
+                  <div className="h-2 w-2 bg-white rounded-full animate-ping"></div>
+                </div>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
-        {/* Main Functions Grid */}
+        {/* Primary Operations Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {atmFunctions.map((func) => {
+          {cyberFunctions.map((func) => {
             const Icon = func.icon;
             return (
-              <Card 
+              <div 
                 key={func.id}
-                className="shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer"
+                className="neon-card cursor-pointer group"
                 onClick={func.onClick}
               >
-                <CardContent className="p-6">
-                  <div className="flex items-center">
-                    <div className={`h-12 w-12 ${func.color} rounded-lg flex items-center justify-center mr-4`}>
-                      <Icon className={`h-6 w-6 ${func.iconColor}`} />
+                <div className="p-6">
+                  <div className="flex items-center space-x-4">
+                    <div className={`h-14 w-14 ${func.gradient} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className="h-7 w-7 text-white" />
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900">{func.title}</h3>
-                      <p className="text-sm text-gray-600">{func.description}</p>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-cyan-300 group-hover:text-cyan-200 transition-colors">{func.title}</h3>
+                      <p className="text-sm text-cyan-400/70">{func.description}</p>
+                      <div className="mt-2 flex items-center space-x-1">
+                        <div className="h-1 w-8 bg-gradient-to-r from-cyan-500 to-transparent rounded-full"></div>
+                        <div className="h-1 w-1 bg-cyan-400 rounded-full animate-pulse"></div>
+                      </div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             );
           })}
         </div>
 
-        {/* Additional Functions Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {additionalFunctions.map((func) => {
-            const Icon = func.icon;
-            return (
-              <Card 
-                key={func.id}
-                className="shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer"
-                onClick={func.onClick}
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center">
-                    <div className={`h-12 w-12 ${func.color} rounded-lg flex items-center justify-center mr-4`}>
-                      <Icon className={`h-6 w-6 ${func.iconColor}`} />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900">{func.title}</h3>
-                      <p className="text-sm text-gray-600">{func.description}</p>
+        {/* Advanced Operations */}
+        <div className="space-y-4 mb-8">
+          <div className="flex items-center space-x-2">
+            <Hexagon className="h-5 w-5 text-purple-400" />
+            <h2 className="text-xl font-bold neon-text-purple">OPERACIONES AVANZADAS</h2>
+            <div className="flex-1 h-px bg-gradient-to-r from-purple-500/50 to-transparent"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {advancedFunctions.map((func) => {
+              const Icon = func.icon;
+              return (
+                <div 
+                  key={func.id}
+                  className="neon-card cursor-pointer group"
+                  onClick={func.onClick}
+                >
+                  <div className="p-6">
+                    <div className="flex items-center space-x-4">
+                      <div className={`h-12 w-12 ${func.gradient} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="h-6 w-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-base font-semibold text-purple-300 group-hover:text-purple-200 transition-colors">{func.title}</h3>
+                        <p className="text-sm text-purple-400/70">{func.description}</p>
+                      </div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            );
-          })}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* System Status */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            { label: "CONEXIÓN", status: "ESTABLE", color: "text-green-400" },
+            { label: "SEGURIDAD", status: "MÁXIMA", color: "text-cyan-400" },
+            { label: "LATENCIA", status: "BAJA", color: "text-purple-400" },
+            { label: "RENDIMIENTO", status: "ÓPTIMO", color: "text-yellow-400" }
+          ].map((stat, index) => (
+            <div key={index} className="bg-black/30 border border-cyan-500/20 rounded-lg p-3">
+              <div className="text-xs text-cyan-400/60 mb-1">{stat.label}</div>
+              <div className={`font-mono text-sm font-semibold ${stat.color}`}>{stat.status}</div>
+              <div className="mt-1 h-1 bg-gray-700 rounded-full overflow-hidden">
+                <div className="h-full bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full animate-pulse" style={{width: '85%'}}></div>
+              </div>
+            </div>
+          ))}
         </div>
       </main>
 

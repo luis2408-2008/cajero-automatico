@@ -73,33 +73,35 @@ export default function WithdrawModal({ isOpen, onClose, onSuccess }: WithdrawMo
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md neon-card border-red-500/30">
         <DialogHeader>
           <div className="flex items-center justify-between">
-            <DialogTitle>Retirar Dinero</DialogTitle>
-            <Button variant="ghost" size="sm" onClick={onClose}>
-              <X className="h-4 w-4" />
+            <DialogTitle className="text-xl neon-text-purple">⬇️ EXTRACCIÓN CUÁNTICA</DialogTitle>
+            <Button variant="ghost" size="sm" onClick={onClose} className="hover:bg-red-500/20">
+              <X className="h-4 w-4 text-red-400" />
             </Button>
           </div>
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-red-500/50 to-transparent"></div>
         </DialogHeader>
 
-        <div className="space-y-4">
-          <p className="text-sm text-gray-600">
-            Saldo disponible:{" "}
-            <span className="font-medium text-green-600">
-              {user ? formatCurrency(user.balance) : "$0.00"}
-            </span>
-          </p>
+        <div className="space-y-6">
+          <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-3">
+            <p className="text-sm text-green-300">
+              Fondos disponibles:{" "}
+              <span className="font-bold text-green-400 neon-text">
+                {user ? formatCurrency(user.balance) : "$0.00"}
+              </span>
+            </p>
+          </div>
 
-          {/* Preset amounts */}
+          {/* Cyber amount buttons */}
           <div className="grid grid-cols-2 gap-3">
             {[50, 100, 200, 500].map((amount) => (
               <Button
                 key={amount}
                 type="button"
-                variant="outline"
                 onClick={() => selectAmount(amount)}
-                className="py-3"
+                className="cyber-button h-12 text-lg font-semibold"
               >
                 ${amount}
               </Button>
@@ -107,43 +109,49 @@ export default function WithdrawModal({ isOpen, onClose, onSuccess }: WithdrawMo
           </div>
 
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
                 control={form.control}
                 name="amount"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Cantidad personalizada</FormLabel>
+                    <FormLabel className="text-cyan-300 font-medium">Cantidad Personalizada</FormLabel>
                     <FormControl>
-                      <Input
-                        type="number"
-                        placeholder="Ingrese cantidad"
-                        min={10}
-                        step={10}
-                        {...field}
-                        onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                      />
+                      <div className="relative">
+                        <Input
+                          type="number"
+                          placeholder="Cantidad a extraer"
+                          min={10}
+                          step={10}
+                          className="cyber-input h-12 text-lg pl-12"
+                          {...field}
+                          onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                        />
+                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                          <div className="h-2 w-2 bg-red-400 rounded-full animate-pulse"></div>
+                        </div>
+                      </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
-              <div className="flex space-x-3">
+              <div className="grid grid-cols-2 gap-3">
                 <Button
                   type="submit"
-                  className="flex-1"
+                  className="cyber-button h-12 text-lg font-semibold bg-gradient-to-r from-red-500 to-orange-500"
                   disabled={withdrawMutation.isPending}
                 >
-                  {withdrawMutation.isPending ? "Procesando..." : "Retirar"}
+                  {withdrawMutation.isPending ? "PROCESANDO..." : "EXTRAER"}
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
-                  className="flex-1"
+                  className="h-12 border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/10"
                   onClick={onClose}
                 >
-                  Cancelar
+                  CANCELAR
                 </Button>
               </div>
             </form>
